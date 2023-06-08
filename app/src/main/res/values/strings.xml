@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">OpenInAppTask</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="overview">Overview</string>
+    <string name="view_analytics">View Analytics</string>
+    <string name="talk_with_us">Talk with us</string>
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="view_all_links">View all Links</string>
+    <string name="clicks">Clicks</string>
+    <string name="total_clicks">Total clicks</string>
+    <string name="todays_clicks">Today\'s clicks</string>
+    <string name="total_links">Total links</string>
+    <string name="top_location">Top location</string>
+    <string name="top_links">Top Links</string>
+    <string name="recent_links">Recent Links</string>
+    <string name="top_source">Top source</string>
+    <string name="best_time">Best time</string>
+    <string name="links">Links</string>
+    <string name="courses">Courses</string>
+    <string name="campaigns">Campaigns</string>
+    <string name="profile">Profile</string>
 </resources>

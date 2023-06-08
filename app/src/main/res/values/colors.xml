@@ -6,5 +6,14 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#0E6FFF</color>
+    <color name="light_trunk">#999CA0</color>
+    <color name="light_ghost">#E8F1FF</color>
+    <color name="sky_blue">#A6C7FF</color>
+    <color name="green">#4AD15F</color>
+    <color name="light_green">#E9f6e7</color>
+    <color name="background">#F5F5F5</color>
+    <color name="light_blue">#Ebf7ff</color>
 </resources>

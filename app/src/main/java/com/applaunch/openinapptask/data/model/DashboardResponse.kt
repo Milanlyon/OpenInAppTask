@@ -1,5 +1,12 @@
 package com.applaunch.openinapptask
 
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalTime.ofInstant
+import java.time.Month
+import java.time.ZoneId
+import java.util.*
+
 data class DashboardResponse(
     val status: Boolean,
     val statusCode: Int,
@@ -20,7 +27,7 @@ data class DashboardResponse(
 data class Data(
     val recent_links: List<Link>,
     val top_links: List<Link>,
-    val overall_url_chart: Map<String, Int>
+    val overall_url_chart: Map<Date, Int>
 )
 
 
@@ -40,3 +47,14 @@ data class Link(
     val app: String
 
 )
+
+fun Map<Date, Int>.toMonthlyMap(): Map<String, Int> {
+    return this.entries
+        .groupBy { entry ->
+            SimpleDateFormat("MMMM", Locale.getDefault()).format(entry.key)
+        }
+        .mapValues { entry ->
+            entry.value.sumOf { it.value }
+        }
+}
+

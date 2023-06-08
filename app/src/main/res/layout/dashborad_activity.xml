@@ -1,45 +1,390 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-
+        <variable
+            name="dashboard"
+            type="com.applaunch.openinapptask.DashboardResponse" />
     </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <Button
-            android:id="@+id/btTopLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TopLink"
+        android:layout_height="match_parent"
+        android:background="@color/blue">
 
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"
-            app:layout_constraintEnd_toStartOf="@+id/btRecentLink"
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_100"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <Button
-            android:id="@+id/btRecentLink"
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/sp_24_text.fig_tree_600.white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recent link"
-            app:layout_constraintStart_toEndOf="@+id/btTopLink"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="650dp"
-            android:background="@color/purple_200"
-            tools:listitem="@layout/dashboard_list_lyt"
-            app:layout_constraintTop_toBottomOf="@id/btTopLink"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_48"
+            android:text="@string/dashboard"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bt_setting"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:backgroundTint="#2b81ff"
+            app:icon="@drawable/ic_setting"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_title"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.MediumComponent"
+            app:strokeColor="@android:color/transparent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            style="@style/CustomCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/background"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_main"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_greeting"
+                        style="@style/sp_16_text.fig_tree_400.light_trunk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_32"
+                        android:text="Good Morning"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Good Morning" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/sp_24_text.fig_tree_600.black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="Ajay Manva"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_greeting"
+                        tools:text="Ajay Manva" />
+
+                    <ImageView
+                        android:id="@+id/iv_waving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_8"
+                        android:src="@drawable/ic_waving"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_user_name"
+                        app:layout_constraintStart_toEndOf="@+id/tv_user_name"
+                        app:layout_constraintTop_toTopOf="@+id/tv_user_name" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_overview"
+                                style="@style/sp_14_text.fig_tree_400.light_trunk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:text="@string/overview"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <Button
+                                android:id="@+id/bt_date_range"
+                                style="@style/OutlineButton.LightTrunk"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="22-Aug - 23-Aug"
+                                android:textAppearance="@style/sp_12_text.fig_tree_400"
+                                android:textColor="@color/black"
+                                android:visibility="gone"
+                                app:cornerSize="@dimen/dp_2"
+                                app:icon="@drawable/ic_clock"
+                                app:iconGravity="textEnd"
+                                app:iconPadding="@dimen/dp_8"
+                                app:iconTint="@color/light_trunk"
+                                app:layout_constraintBottom_toBottomOf="@+id/tv_overview"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/tv_overview" />
+
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/line_chart"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_100"
+                                android:layout_marginStart="@dimen/dp_16"
+                                android:layout_marginTop="@dimen/dp_16"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/bt_date_range" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <HorizontalScrollView
+                        android:id="@+id/scrollView_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:scrollbars="none"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/card_chart">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <include
+                                layout="@layout/layout_info"
+                                bind:data1="@{String.valueOf(dashboard.total_clicks)}"
+                                bind:data2="@{@string/total_clicks}"
+                                bind:image="@{@drawable/ic_click}" />
+
+                            <include
+                                layout="@layout/layout_info"
+                                bind:data1="@{String.valueOf(dashboard.today_clicks)}"
+                                bind:data2="@{@string/total_clicks}"
+                                bind:image="@{@drawable/ic_click}" />
+
+                            <include
+                                layout="@layout/layout_info"
+                                bind:data1="@{String.valueOf(dashboard.total_links)}"
+                                bind:data2="@{@string/total_links}"
+                                bind:image="@{@drawable/ic_link}" />
+
+                            <include
+                                layout="@layout/layout_info"
+                                bind:data1="@{dashboard.top_location}"
+                                bind:data2="@{@string/top_location}"
+                                bind:image="@{@drawable/ic_top_location}" />
+
+                            <include
+                                layout="@layout/layout_info"
+                                bind:data1="@{dashboard.top_source}"
+                                bind:data2="@{@string/top_source}"
+                                bind:image="@{@drawable/ic_top_source}" />
+
+                            <include
+                                layout="@layout/layout_info"
+                                bind:data1="@{String.valueOf(dashboard.startTime)}"
+                                bind:data2="@{@string/best_time}"
+                                bind:image="@{@drawable/ic_top_source}" />
+
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                    <Button
+                        android:id="@+id/btn_view_analytics"
+                        style="@style/OutlineButton.LightTrunk"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:layout_marginHorizontal="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:text="@string/view_analytics"
+                        android:textAppearance="@style/sp_16_text.fig_tree_600"
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_view_analytics"
+                        app:iconGravity="textStart"
+                        app:iconPadding="@dimen/dp_16"
+                        app:iconTint="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/scrollView_info" />
+
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_link"
+                        style="@style/Widget.Material3.TabLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_40"
+                        android:background="@color/background"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btn_view_analytics"
+                        app:tabBackground="@drawable/bg_tab_selector"
+                        app:tabIndicator="@null"
+                        app:tabMode="fixed"
+                        app:tabTextAppearance="@style/TextAppearance.Material3.TitleLarge"
+                        app:tabTextColor="@color/tab_text_color_selector">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab_top_link"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_24"
+                            android:text="@string/top_links" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab_recent_link"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/recent_links" />
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_20"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tab_link"
+                        tools:listitem="@layout/layout_link_item" />
+
+                    <Button
+                        android:id="@+id/bt_view_all_link"
+                        style="@style/OutlineButton.LightTrunk"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:layout_marginHorizontal="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:text="@string/view_all_links"
+                        android:textAppearance="@style/sp_16_text.fig_tree_600"
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_link"
+                        app:iconGravity="textStart"
+                        app:iconPadding="@dimen/dp_16"
+                        app:iconTint="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+
+                    <Button
+                        android:id="@+id/bt_talk_with_us"
+                        style="@style/ContainedButton.LightGreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_marginHorizontal="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:gravity="start"
+                        android:padding="@dimen/dp_16"
+                        android:text="@string/talk_with_us"
+                        android:textAppearance="@style/sp_16_text.fig_tree_600"
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_whatsapp"
+                        app:iconGravity="start"
+                        app:iconPadding="@dimen/dp_12"
+                        app:iconTint="@color/green"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/bt_view_all_link" />
+
+                    <Button
+                        android:id="@+id/bt_frequently_asked_questions"
+                        style="@style/ContainedButton.LightBlue"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_marginHorizontal="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:layout_marginBottom="@dimen/dp_32"
+                        android:gravity="start"
+                        android:padding="@dimen/dp_16"
+                        android:text="@string/frequently_asked_questions"
+                        android:textAppearance="@style/sp_16_text.fig_tree_600"
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_question_mark"
+                        app:iconGravity="start"
+                        app:iconPadding="@dimen/dp_12"
+                        app:iconTint="@color/blue"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/bt_talk_with_us" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:elevation="0dp"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:background="@drawable/bg_add_button"
+            android:padding="@dimen/dp_20"
+            android:src="@drawable/ic_plus"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bottom_navigation_main" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:elevation="2dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/blue"
+            android:indeterminateTintMode="src_atop"
+            android:progressTint="@color/blue"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

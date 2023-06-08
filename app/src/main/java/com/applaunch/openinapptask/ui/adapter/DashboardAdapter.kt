@@ -1,9 +1,10 @@
-package com.applaunch.openinapptask
+package com.applaunch.openinapptask.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.applaunch.openinapptask.databinding.DashboardListLytBinding
+import com.applaunch.openinapptask.Link
+import com.applaunch.openinapptask.databinding.LayoutLinkItemBinding
 import com.bumptech.glide.Glide
 import java.util.*
 
@@ -11,8 +12,7 @@ class DashboardAdapter() : RecyclerView.Adapter<DashboardAdapter.DashboardViewHo
     var dataList: List<Link> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
-        val binding =
-            DashboardListLytBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = LayoutLinkItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DashboardViewHolder(binding,parent)
     }
 
@@ -30,10 +30,10 @@ class DashboardAdapter() : RecyclerView.Adapter<DashboardAdapter.DashboardViewHo
         notifyDataSetChanged()
     }
 
-    inner class DashboardViewHolder(private var binding: DashboardListLytBinding, parent: ViewGroup) : RecyclerView.ViewHolder(binding.root) {
+    inner class DashboardViewHolder(private var binding: LayoutLinkItemBinding, parent: ViewGroup) : RecyclerView.ViewHolder(binding.root) {
         fun binding(link: Link) {
             binding.link = link
-           Glide.with(binding.root).load(link.original_image).into( binding.img)
+           Glide.with(binding.root).load(link.original_image).into( binding.ivLink)
         }
     }
 }
