@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="OutlinedIconButton"  parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconPadding">10dp</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+<style name="OutlinedIconButton2">
+    <item name="iconPadding"></item>
+</style>
+
+
+
+</resources>
