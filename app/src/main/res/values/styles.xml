@@ -157,5 +157,6 @@
     <style name="ContainedButton.LightBlue" >
         <item name="strokeColor">@color/blue</item>
         <item name="backgroundTint">@color/light_blue</item>
+
     </style>
 </resources>

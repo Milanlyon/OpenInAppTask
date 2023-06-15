@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">OpenInAppTask</string>
+    <string name="user_name">Ajay Manva</string>
+    <string name="greeting">Good Morning</string>
     <string name="dashboard">Dashboard</string>
     <string name="overview">Overview</string>
     <string name="view_analytics">View Analytics</string>

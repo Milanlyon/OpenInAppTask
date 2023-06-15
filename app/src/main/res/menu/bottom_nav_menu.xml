@@ -3,23 +3,33 @@
     <item
         android:id="@+id/links"
         android:icon="@drawable/ic_link"
-        android:title="@string/links" />
+        android:title="@string/links"
+        android:enabled="true"
+        />
     <item
         android:id="@+id/courses"
         android:icon="@drawable/ic_courses"
-        android:title="@string/courses" />
+        android:title="@string/courses"
+        android:enabled="true"
+        />
 
     <item
         android:id="@+id/add"
         android:icon="@null"
-        android:title="" />
+        android:title=""
+        android:enabled="true"
+        />
     <item
         android:id="@+id/campaigns"
         android:icon="@drawable/ic_campaigns"
-        android:title="@string/campaigns" />
+        android:title="@string/campaigns"
+        android:enabled="true"
+        />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
-        android:title="@string/profile" />
+        android:title="@string/profile"
+        android:enabled="true"
+        />
 
 </menu>

@@ -1,5 +1,7 @@
 package com.applaunch.openinapptask
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var viewModel: DashboardViewModel
@@ -60,11 +63,16 @@ class DashboardActivity : AppCompatActivity() {
             })
 
             btTalkWithUs.setOnClickListener {
-
+                startActivity(
+                    Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://api.whatsapp.com/send?phone=" + binding.dashboard!!.support_whatsapp_number)
+                    )
+                )
             }
 
         }
     }
+
 
     private fun initObserver() {
         viewModel.dashboardLiveData.observe(this, Observer { dashboard ->
@@ -107,11 +115,8 @@ class DashboardActivity : AppCompatActivity() {
 
             val lineDataSet = LineDataSet(entries, "")
             lineDataSet.color = R.color.white
-
-            // drawables only supported on api level 18 and above
             val drawable = ContextCompat.getDrawable(this@DashboardActivity, R.drawable.blue_fade)
             lineDataSet.fillDrawable = drawable
-            //
             val lineData = LineData(lineDataSet)
 
             description.isEnabled = false

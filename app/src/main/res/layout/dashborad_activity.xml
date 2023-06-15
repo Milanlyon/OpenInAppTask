@@ -80,10 +80,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_16"
                         android:layout_marginTop="@dimen/dp_32"
-                        android:text="Good Morning"
+                        android:text="@string/greeting"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Good Morning" />
+                        tools:text="@string/greeting" />
 
                     <TextView
                         android:id="@+id/tv_user_name"
@@ -92,10 +92,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_16"
                         android:layout_marginTop="@dimen/dp_8"
-                        android:text="Ajay Manva"
+                        android:text="@string/user_name"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_greeting"
-                        tools:text="Ajay Manva" />
+                        tools:text="@string/user_name" />
 
                     <ImageView
                         android:id="@+id/iv_waving"
