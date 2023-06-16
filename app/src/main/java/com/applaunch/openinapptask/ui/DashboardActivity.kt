@@ -94,8 +94,6 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun setChart(dashboardResponse: DashboardResponse) {
-        dashboardResponse.data.overall_url_chart
-
         binding.lineChart.apply {
 
             val dateMap = dashboardResponse.data.overall_url_chart

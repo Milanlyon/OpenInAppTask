@@ -48,13 +48,4 @@ data class Link(
 
 )
 
-fun Map<Date, Int>.toMonthlyMap(): Map<String, Int> {
-    return this.entries
-        .groupBy { entry ->
-            SimpleDateFormat("MMMM", Locale.getDefault()).format(entry.key)
-        }
-        .mapValues { entry ->
-            entry.value.sumOf { it.value }
-        }
-}
 
