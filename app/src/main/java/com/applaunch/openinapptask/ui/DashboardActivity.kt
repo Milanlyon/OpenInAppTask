@@ -34,8 +34,8 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.dashborad_activity)
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        initObserver()
         initAdapter()
+        initObserver()
         setListeners()
     }
 
@@ -43,11 +43,11 @@ class DashboardActivity : AppCompatActivity() {
         binding.apply {
             tabLink.addOnTabSelectedListener(object : OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    if (tab?.id == R.id.tab_top_link) {
+                    if (tab?.position == 0) {
                         viewModel.dashboardLiveData.value?.data?.let {
                             dashboardAdapter.updateData(it.top_links)
                         }
-                    } else {
+                    } else  {
                         viewModel.dashboardLiveData.value?.data?.let {
                             dashboardAdapter.updateData(it.recent_links)
                         }
@@ -79,17 +79,15 @@ class DashboardActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             binding.dashboard = dashboard
             setChart(dashboard)
-            dashboardAdapter = DashboardAdapter()
-            binding.recyclerView.adapter = dashboardAdapter
             dashboardAdapter.updateData(dashboard.data.top_links)
-
         })
     }
 
     private fun initAdapter() {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@DashboardActivity)
-            binding.recyclerView.adapter = DashboardAdapter()
+            dashboardAdapter = DashboardAdapter()
+            binding.recyclerView.adapter = dashboardAdapter
         }
     }
 

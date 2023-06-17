@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class DashboardViewModel : ViewModel() {
     private val dashboardRepo = DashboardRepoImpl()
     private val _dashboardLiveData = MutableLiveData<DashboardResponse>()
-    val dashboardLiveData: LiveData<DashboardResponse> = _dashboardLiveData
+   val dashboardLiveData: LiveData<DashboardResponse> = _dashboardLiveData
 
     init {
         getAllData()

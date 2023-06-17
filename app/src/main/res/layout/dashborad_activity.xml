@@ -181,13 +181,13 @@
 
                             <include
                                 layout="@layout/layout_info"
-                                bind:data1="@{String.valueOf(dashboard.total_clicks)}"
-                                bind:data2="@{@string/total_clicks}"
+                                bind:data1="@{String.valueOf(dashboard.today_clicks)}"
+                                bind:data2="@{@string/todays_clicks}"
                                 bind:image="@{@drawable/ic_click}" />
 
                             <include
                                 layout="@layout/layout_info"
-                                bind:data1="@{String.valueOf(dashboard.today_clicks)}"
+                                bind:data1="@{String.valueOf(dashboard.total_clicks)}"
                                 bind:data2="@{@string/total_clicks}"
                                 bind:image="@{@drawable/ic_click}" />
 
@@ -213,7 +213,7 @@
                                 layout="@layout/layout_info"
                                 bind:data1="@{String.valueOf(dashboard.startTime)}"
                                 bind:data2="@{@string/best_time}"
-                                bind:image="@{@drawable/ic_top_source}" />
+                                bind:image="@{@drawable/ic_clock}" />
 
 
                         </LinearLayout>
